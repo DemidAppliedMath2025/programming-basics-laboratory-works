@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 int main() {
     std::string a_str, b_str, r_str, d_str, e_str;
@@ -32,7 +33,5 @@ int main() {
         }
     } catch (...) {
         std::cout << "Some argument(s) is(are) not number(s)";
-
-        return;
     }
 }
