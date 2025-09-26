@@ -23,11 +23,12 @@ int main() {
             double x_1 = (-coefficient_b + sqrt(discriminant)) / (2 * coefficient_a);
             double x_2 = (-coefficient_b - sqrt(discriminant)) / (2 * coefficient_a);
 
-            std::cout << x_1 << " " << x_2;
+            std::cout << x_1 << " " << d * x_1 + e << "\n";
+            std::cout << x_2 << " " << d * x_2 + e << "\n";
         } else if (discriminant == 0) {
             double x = (-coefficient_b) / 2 * coefficient_a;
 
-            std::cout << x;
+            std::cout << x << " " << d * x + e;
         } else {
             std::cout << "No solutions";
         }
