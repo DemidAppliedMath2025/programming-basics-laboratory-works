@@ -1,3 +1,6 @@
+#include <vector>
+#include <iostream>
+
 int main() {
     std::vector<unsigned int> numbers;
     std::vector<unsigned int> good_numbers;
