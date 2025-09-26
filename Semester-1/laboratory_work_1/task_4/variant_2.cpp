@@ -80,7 +80,5 @@ int main() {
         }
     } catch (...) {
         std::cout << "Some argument(s) is(are) not number(s)";
-
-        return;
     }
 }
