@@ -1,3 +1,7 @@
+#include <iostream>
+#include <cmath>
+#include <vector>
+
 bool is_included_in_first_area(double x, double y) {
     if (x <= 0) {
         return sqrt(pow(x, 2) + pow(y, 2)) <= 2;
