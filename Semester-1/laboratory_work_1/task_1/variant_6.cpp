@@ -1,3 +1,7 @@
+#include <cmath>
+#include <iostream>
+#include <iomanip>
+
 double expression_a(double p, double q) {
     double denominator = pow((sqrt(pow(p, 3)) / sqrt(p) + p), 0.25) / pow(pow((p - q), 3), 0.125);
     double divisor = pow(sqrt(p) / (sqrt(p) - sqrt(q)) - sqrt(p / q) + 1, 0.25);
