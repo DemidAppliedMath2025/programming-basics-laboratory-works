@@ -2,19 +2,19 @@
 #include <cmath>
 
 double f1(double x) {
-    return asin(x) / sqrt(3);
+    return 1.0 / sqrt(3 - 3 * x * x);
 }
 
 double f2(double x) {
-    return -cos(exp(x));
+    return exp(x) * sin(exp(x));
 }
 
 double f3(double x) {
-    return std::log(std::abs(x - 1)) / 2 - std::log(std::abs(x + 1)) / 2;
+    return 1.0 / (x * x - 1);
 }
 
 double f4(double x) {
-    return sqrt(x * x + 1) * atan(x) - std::log(sqrt(x * x + 1) + x);
+    return (x * atan(x)) / sqrt(1 + x * x);
 }
 
 double rectangle_method(double a, double b, double n, double (*func)(double)) {
@@ -62,7 +62,7 @@ double simpson_method(double a, double b, double n, double (*func)(double)) {
     return (h / 3.0) * sum;
 }
 
-void first_integral() {
+void first_integral(int epsilon) {
     double rectangle_meth = rectangle_method(4, 3, 1000, f1);
     double trapezoid_meth = trapezoid_method(4, 3, 1000, f1);
     double simpson_meth = simpson_method(4, 3, 1000, f1);
@@ -74,13 +74,13 @@ void first_integral() {
     } else if (rectangle_meth == INFINITY || trapezoid_meth == INFINITY || simpson_meth == INFINITY) {
         std::cout << "The integral diverges" << "\n\n";
     } else {
-        std::cout << rectangle_method(4, 3, 1000, f1) << "\n";
-        std::cout << trapezoid_method(4, 3, 1000, f1) << "\n";
-        std::cout << simpson_method(4, 3, 1000, f1) << "\n\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << rectangle_method(4, 3, 1000, f1) << "\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << trapezoid_method(4, 3, 1000, f1) << "\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << simpson_method(4, 3, 1000, f1) << "\n\n";
     }
 }
 
-void second_integral() {
+void second_integral(int epsilon) {
     double rectangle_meth = rectangle_method(-2 * M_PI / 7, 2 * M_PI / 7, 1000, f2);
     double trapezoid_meth = trapezoid_method(-2 * M_PI / 7, 2 * M_PI / 7, 1000, f2);
     double simpson_meth = simpson_method(-2 * M_PI / 7, 2 * M_PI / 7, 1000, f2);
@@ -92,13 +92,13 @@ void second_integral() {
     } else if (rectangle_meth == INFINITY || trapezoid_meth == INFINITY || simpson_meth == INFINITY) {
         std::cout << "The integral diverges" << "\n\n";
     } else {
-        std::cout << rectangle_method(-2 * M_PI / 7, 2 * M_PI / 7, 1000, f2) << "\n";
-        std::cout << trapezoid_method(-2 * M_PI / 7, 2 * M_PI / 7, 1000, f2) << "\n";
-        std::cout << simpson_method(-2 * M_PI / 7, 2 * M_PI / 7, 1000, f2) << "\n\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << rectangle_method(-2 * M_PI / 7, 2 * M_PI / 7, 1000, f2) << "\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << trapezoid_method(-2 * M_PI / 7, 2 * M_PI / 7, 1000, f2) << "\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << simpson_method(-2 * M_PI / 7, 2 * M_PI / 7, 1000, f2) << "\n\n";
     }
 }
 
-void third_integral() {
+void third_integral(int epsilon) {
     double rectangle_meth = rectangle_method(-7, -1, 1000, f3);
     double trapezoid_meth = trapezoid_method(-7, -1, 1000, f3);
     double simpson_meth = simpson_method(-7, -1, 1000, f3);
@@ -110,13 +110,13 @@ void third_integral() {
     } else if (rectangle_meth == INFINITY || trapezoid_meth == INFINITY || simpson_meth == INFINITY) {
         std::cout << "The integral diverges" << "\n\n";
     } else {
-        std::cout << rectangle_method(-7, -1, 1000, f3) << "\n";
-        std::cout << trapezoid_method(-7, -1, 1000, f3) << "\n";
-        std::cout << simpson_method(-7, -1, 1000, f3) << "\n\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << rectangle_method(-7, -1, 1000, f3) << "\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << trapezoid_method(-7, -1, 1000, f3) << "\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << simpson_method(-7, -1, 1000, f3) << "\n\n";
     }
 }
 
-void fourth_integral() {
+void fourth_integral(int epsilon) {
     double rectangle_meth = rectangle_method(-2 * M_PI, 2 * M_PI, 1000, f4);
     double trapezoid_meth = trapezoid_method(-2 * M_PI, 2 * M_PI, 1000, f4);
     double simpson_meth = simpson_method(-2 * M_PI, 2 * M_PI, 1000, f4);
@@ -128,15 +128,27 @@ void fourth_integral() {
     } else if (rectangle_meth == INFINITY || trapezoid_meth == INFINITY || simpson_meth == INFINITY) {
         std::cout << "The integral diverges" << "\n\n";
     } else {
-        std::cout << rectangle_method(-2 * M_PI, 2 * M_PI, 1000, f4) << "\n";
-        std::cout << trapezoid_method(-2 * M_PI, 2 * M_PI, 1000, f4) << "\n";
-        std::cout << simpson_method(-2 * M_PI, 2 * M_PI, 1000, f4) << "\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << rectangle_method(-2 * M_PI, 2 * M_PI, 1000, f4) << "\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << trapezoid_method(-2 * M_PI, 2 * M_PI, 1000, f4) << "\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << simpson_method(-2 * M_PI, 2 * M_PI, 1000, f4) << "\n";
     }
 }
 
 int main() {
-    first_integral();
-    second_integral();
-    third_integral();
-    fourth_integral();
+    std::string eps_str;
+
+    std::cin >> eps_str;
+
+    try {
+        int eps = std::stoi(eps_str);
+
+        first_integral(eps);
+        second_integral(eps);
+        third_integral(eps);
+        fourth_integral(eps);
+    } catch (...) {
+        std::cout << "Some argument(s) is(are) not number(s)";
+
+        return;
+    }
 }
