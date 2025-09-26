@@ -1,7 +1,7 @@
 #include <iostream>
 
 bool expression_a(int x, int y, int z) {
-    return !(!(!x * y + x * !y) * y) + x * z;
+    return !(!x * y + x * !y) || x + x * z;
 }
 
 bool expression_b(int x, int y, int z) {
