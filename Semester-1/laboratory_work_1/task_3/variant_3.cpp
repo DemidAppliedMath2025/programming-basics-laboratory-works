@@ -1,3 +1,5 @@
+#include <iostream>
+
 int main() {
     // "ИКС+ИСК=КСИ";
 
