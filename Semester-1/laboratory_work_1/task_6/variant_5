@@ -1,0 +1,27 @@
+int main() {
+    std::vector<unsigned int> numbers;
+    std::vector<unsigned int> good_numbers;
+    unsigned int input = 1;
+    int i = -1;
+
+    while (true) {
+        std::cin >> input;
+
+        if (input == 0) {
+            break;
+        }
+
+        i++;
+        numbers.push_back(input);
+
+        if (i > 0) {
+            if (numbers[i - 1] >= input) {
+                good_numbers.push_back(input);
+            }
+        }
+    }
+
+    for (unsigned int good_number : good_numbers) {
+        std::cout << good_number << "\n";
+    }
+}
