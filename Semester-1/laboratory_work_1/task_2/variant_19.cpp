@@ -1,3 +1,5 @@
+#include <iostream>
+
 int main() {
     std::string a_str, b_str, r_str, d_str, e_str;
 
