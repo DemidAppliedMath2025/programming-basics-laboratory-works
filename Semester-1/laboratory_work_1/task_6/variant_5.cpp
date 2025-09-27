@@ -18,7 +18,7 @@ int main() {
         numbers.push_back(input);
 
         if (i > 0) {
-            if (numbers[i - 1] >= input) {
+            if (numbers[i - 1] == input) {
                 good_numbers.push_back(input);
             }
         }
