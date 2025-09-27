@@ -3,28 +3,21 @@
 
 int main() {
     std::vector<unsigned int> numbers;
-    std::vector<unsigned int> good_numbers;
     unsigned int input = 1;
     int i = -1;
+
+    std::cout << "Enter as many numbers as you want. Once you're done, enter any symbol that is not a natural number" << "\n";
 
     while (true) {
         std::cin >> input;
 
-        if (input == 0) {
+        if (!input) {
             break;
         }
 
         i++;
         numbers.push_back(input);
-
-        if (i > 0) {
-            if (numbers[i - 1] == input) {
-                good_numbers.push_back(input);
-            }
-        }
     }
 
-    for (unsigned int good_number : good_numbers) {
-        std::cout << good_number << "\n";
-    }
+    std::cout << "No such elements that fulfill the condition";
 }
