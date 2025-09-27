@@ -32,23 +32,23 @@ bool is_included_in_second_area(double x, double y) {
         {0, 1, 1, 0, 0, 1, 1, 0, 0, 1}
     };
 
-    if ((x_column - 1 < x && x < x_column) && (y_row - 1 < y && y < y_row) && !(table[y_row][x_column])) {
+    if ((x_column - 1 < x && x < x_column) && (y_row - 1 < y && y < y_row) && !(table[y_row - 1][x_column - 1])) {
         return false;
     } else {
-        if (table[y_row][x_column]) {
+        if (table[y_row - 1][x_column - 1]) {
             return true;
         }
 
         if (x == x_column && y != y_row && x != 10) {
-            if (table[y_row][x_column + 1]) {
+            if (table[y_row - 1][x_column]) {
                 return true;
             }
         } else if (x != x_column && y == y_row && y != 10) {
-            if (table[y_row + 1][x_column]) {
+            if (table[y_row][x_column - 1]) {
                 return true;
             }
         } else if (x == x_column && y == y_row) {
-            if (table[y_row][x_column + 1] || table[y_row + 1][x_column + 1] || table[y_row + 1][x_column]) {
+            if (table[y_row - 1][x_column] || table[y_row][x_column] || table[y_row][x_column - 1]) {
                 return true;
             }
         }
