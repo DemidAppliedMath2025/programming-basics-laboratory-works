@@ -18,6 +18,10 @@ bool is_included_in_second_area(double x, double y) {
     int y_row = static_cast<int>(ceil(y));
     int x_column = static_cast<int>(ceil(x));
 
+    if (x > 10 || y > 10) {
+        return false;
+    }
+
     const int N = 10;
     int table[N][N] = {
         {1, 1, 0, 0, 1, 1, 0, 0, 1, 1},
