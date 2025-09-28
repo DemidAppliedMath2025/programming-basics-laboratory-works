@@ -2,22 +2,28 @@
 #include <iostream>
 
 int main() {
-    std::vector<unsigned int> numbers;
-    unsigned int input = 1;
-    int i = -1;
+    std::string n_str;
 
-    std::cout << "Enter as many numbers as you want. Once you're done, enter any symbol that is not a natural number" << "\n";
+    std::cout << "Enter the amount of numbers you want to input" << "\n";
+    std::cin >> n_str;
 
-    while (true) {
-        std::cin >> input;
+    try {
+        int n = std::stoi(n_str);
+        int input;
+        int numbers[n];
 
-        if (!input) {
-            break;
+        for (int i = 0; i < n; i++) {
+            std::cin >> input;
+
+            if (!input) {
+                std::cout << "The input is not a natural number";
+            }
+
+            numbers[i] = input;
         }
 
-        i++;
-        numbers.push_back(input);
+        std::cout << "No such elements that fulfill the condition";
+    } catch (...) {
+        std::cout << "Argument is not an integer";
     }
-
-    std::cout << "No such elements that fulfill the condition";
 }
