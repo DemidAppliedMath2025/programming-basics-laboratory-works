@@ -50,7 +50,7 @@ int main() {
         double B = std::stod(B_str);
         int eps = std::stoi(eps_str);
 
-        std::vector<double> numbers;
+        double numbers[N];
 
         std::cout << "\nEnter N amount of points (x)\n";
 
@@ -60,7 +60,7 @@ int main() {
             double number = std::stod(number_str);
 
             if (A <= number && number <= B) {
-                numbers.push_back(number);
+                numbers[n] = number;
             } else {
                 std::cout << "This point (x) is out of range [A; B]\n";
             }
@@ -74,5 +74,7 @@ int main() {
 
     } catch (...) {
         std::cout << "Some argument(s) is(are) not number(s)";
+
+        return;
     }
 }
