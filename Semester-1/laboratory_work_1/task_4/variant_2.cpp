@@ -15,6 +15,8 @@ bool is_included_in_first_area(double x, double y) {
 }
 
 bool is_included_in_second_area(double x, double y) {
+    x = fmod(x, 10);
+    y = fmod(y, 10);
     int y_row = static_cast<int>(ceil(y));
     int x_column = static_cast<int>(ceil(x));
 
