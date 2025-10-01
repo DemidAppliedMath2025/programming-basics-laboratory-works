@@ -18,7 +18,13 @@ bool is_included_in_second_area(double x, double y) {
     double new_x = fmod(x, 4);
     double new_y = fmod(y, 4);
 
-    return !(((0 < new_x && new_x < 1) && (1 < new_y && new_y < 2)) || ((2 < new_x && new_x < 3) && (0 < new_y && new_y < 1)) || ((1 < new_x && new_x < 3) && (2 < new_y && new_y < 3)) || ((2 < new_x && new_x < 4) && (3 < new_y && new_y < 4)) || ((3 < new_x && new_x < 4) && (0 < new_y && new_y < 2)));
+    return !(
+        ((0 < new_x && new_x < 1) && (1 < new_y && new_y < 2)) ||
+        ((2 < new_x && new_x < 3) && (0 < new_y && new_y < 1)) ||
+        ((1 < new_x && new_x < 3) && (2 < new_y && new_y < 3)) ||
+        ((2 < new_x && new_x < 4) && (3 < new_y && new_y < 4)) ||
+        ((3 < new_x && new_x < 4) && (0 < new_y && new_y < 2))
+    );
 }
 
 int main() {
