@@ -20,6 +20,7 @@ bool is_included_in_second_area(double x, double y) {
 
     if (fmod(y, 8) > 4) {
         new_x += 2;
+        new_x = fmod(new_x, 4);
     }
 
     return !(
