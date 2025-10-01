@@ -11,8 +11,19 @@ int main() {
         int n = std::stoi(n_str);
         int input;
         int numbers[n];
+        std::string output;
 
-        for (int i = 0; i < n; i++) {
+        std::cout << "Now enter the numbers themselves" << "\n";
+        std::cin >> input;
+
+        while (!input) {
+            std::cout << "The input is not a natural number";
+            std::cin >> input;
+        }
+
+        numbers[0] = input;
+
+        for (int i = 1; i < n; i++) {
             std::cin >> input;
 
             if (!input) {
@@ -20,9 +31,18 @@ int main() {
             }
 
             numbers[i] = input;
+
+            double x1 = -sqrt(numbers[i] - numbers[i - 1]);
+            double x2 = -sqrt(numbers[i] - numbers[i - 1]);
+
+            !(((static_cast<int>(x1) >> 31) & 1) && ((static_cast<int>(x2) >> 31) & 1)) ? output += std::to_string(input) : output += "";
         }
 
-        std::cout << "No such elements that fulfill the condition";
+        if (output.empty()) {
+            std::cout << "No such elements that fit the condition";
+        } else {
+            std::cout << output;
+        }
     } catch (...) {
         std::cout << "Argument is not an integer";
     }
