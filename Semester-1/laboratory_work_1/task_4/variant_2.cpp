@@ -15,52 +15,10 @@ bool is_included_in_first_area(double x, double y) {
 }
 
 bool is_included_in_second_area(double x, double y) {
-    double new_x = fmod(x, 10);
-    double new_y = fmod(y, 10);
-    int y_row = static_cast<int>(ceil(new_y));
-    int x_column = static_cast<int>(ceil(new_x));
+    double new_x = fmod(x, 4);
+    double new_y = fmod(y, 4);
 
-    if (new_x > 10 || new_y > 10) {
-        return false;
-    }
-
-    const int N = 10;
-    int table[N][N] = {
-        {1, 1, 0, 0, 1, 1, 0, 0, 1, 1},
-        {0, 1, 1, 0, 0, 1, 1, 0, 0, 1},
-        {1, 0, 0, 1, 1, 0, 0, 1, 1, 0},
-        {1, 1, 0, 0, 1, 1, 0, 0, 1, 1},
-        {0, 0, 1, 1, 0, 0, 1, 1, 0, 0},
-        {1, 0, 0, 1, 1, 0, 0, 1, 1, 0},
-        {0, 1, 1, 0, 0, 1, 1, 0, 0, 1},
-        {0, 0, 1, 1, 0, 0, 1, 1, 0, 0},
-        {1, 1, 0, 0, 1, 1, 0, 0, 1, 1},
-        {0, 1, 1, 0, 0, 1, 1, 0, 0, 1}
-    };
-
-    if ((x_column - 1 < new_x && new_x < x_column) && (y_row - 1 < new_y && new_y < y_row) && !(table[y_row - 1][x_column - 1])) {
-        return false;
-    } else {
-        if (table[y_row - 1][x_column - 1]) {
-            return true;
-        }
-
-        if (new_x == x_column && new_y != y_row && new_x != 10) {
-            if (table[y_row - 1][x_column]) {
-                return true;
-            }
-        } else if (new_x != x_column && new_y == y_row && new_y != 10) {
-            if (table[y_row][x_column - 1]) {
-                return true;
-            }
-        } else if (new_x == x_column && new_y == y_row) {
-            if (table[y_row - 1][x_column] || table[y_row][x_column] || table[y_row][x_column - 1]) {
-                return true;
-            }
-        }
-
-        return false;
-    }
+    return !(((0 < new_x && new_x < 1) && (1 < new_y && new_y < 2)) || ((2 < new_x && new_x < 3) && (0 < new_y && new_y < 1)) || ((1 < new_x && new_x < 3) && (2 < new_y && new_y < 3)) || ((2 < new_x && new_x < 4) && (3 < new_y && new_y < 4)) || ((3 < new_x && new_x < 4) && (0 < new_y && new_y < 2)));
 }
 
 int main() {
