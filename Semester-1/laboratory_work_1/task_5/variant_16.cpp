@@ -1,11 +1,11 @@
 #include <iostream>
 
 bool expression_a(int x, int y, int z) {
-    return !(!x * y + x * !y) || x + x * z;
+    return !(!x && y || x && !y) || x || x && z;
 }
 
 bool expression_b(int x, int y, int z) {
-    return !(x + z * (x + !z)) + (!x * y + x * !y);
+    return !(x || z && (x || !z)) || (!x && y || x && !y);
 }
 
 int main() {
