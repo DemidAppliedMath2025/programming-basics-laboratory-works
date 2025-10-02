@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cmath>
-
 double f1(double x) {
     return 1.0 / sqrt(3 - 3 * x * x);
 }
@@ -21,7 +20,7 @@ double rectangle_method(double a, double b, double n, double (*func)(double)) {
     double h = (b - a) / n;
     double sum = 0.0;
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; ++i) {
         double xi = a + i * h;
         sum += h * func(xi);
     }
@@ -33,7 +32,7 @@ double trapezoid_method(double a, double b, double n, double (*func)(double)) {
     double h = (b - a) / n;
     double sum = func(a) + func(b);
 
-    for (int i = 1; i < n; i++) {
+    for (int i = 1; i < n; ++i) {
         double x = a + i * h;
         sum += 2 * func(x);
     }
@@ -49,7 +48,7 @@ double simpson_method(double a, double b, double n, double (*func)(double)) {
     double h = (b - a) / n;
     double sum = func(a) + func(b);
 
-    for (int i = 1; i < n; i++) {
+    for (int i = 1; i < n; ++i) {
         double x_i = a + i * h;
 
         if (i % 2 == 0) {
@@ -63,20 +62,20 @@ double simpson_method(double a, double b, double n, double (*func)(double)) {
 }
 
 void first_integral(int epsilon) {
-    double rectangle_meth = rectangle_method(4, 3, 1000, f1);
-    double trapezoid_meth = trapezoid_method(4, 3, 1000, f1);
-    double simpson_meth = simpson_method(4, 3, 1000, f1);
+    double rectangle_meth = rectangle_method(3, 4, 1000, f1);
+    double trapezoid_meth = trapezoid_method(3, 4, 1000, f1);
+    double simpson_meth = simpson_method(3, 4, 1000, f1);
 
     std::cout << "1" << "\n";
 
     if (std::isnan(rectangle_meth) || std::isnan(trapezoid_meth) || std::isnan(simpson_meth)) {
         std::cout << "Integral value does not belong to R" << "\n\n";
-    } else if (rectangle_meth == INFINITY || trapezoid_meth == INFINITY || simpson_meth == INFINITY) {
+    } else if (std::isinf(rectangle_meth) || std::isinf(trapezoid_meth) || std::isinf(simpson_meth)) {
         std::cout << "The integral diverges" << "\n\n";
     } else {
-        std::cout << std::fixed << std::setprecision(epsilon) << rectangle_method(4, 3, 1000, f1) << "\n";
-        std::cout << std::fixed << std::setprecision(epsilon) << trapezoid_method(4, 3, 1000, f1) << "\n";
-        std::cout << std::fixed << std::setprecision(epsilon) << simpson_method(4, 3, 1000, f1) << "\n\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << rectangle_meth << "\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << trapezoid_meth << "\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << simpson_meth << "\n\n";
     }
 }
 
@@ -89,12 +88,12 @@ void second_integral(int epsilon) {
 
     if (std::isnan(rectangle_meth) || std::isnan(trapezoid_meth) || std::isnan(simpson_meth)) {
         std::cout << "Integral value does not belong to R" << "\n\n";
-    } else if (rectangle_meth == INFINITY || trapezoid_meth == INFINITY || simpson_meth == INFINITY) {
+    } else if (std::isinf(rectangle_meth) || std::isinf(trapezoid_meth) || std::isinf(simpson_meth)) {
         std::cout << "The integral diverges" << "\n\n";
     } else {
-        std::cout << std::fixed << std::setprecision(epsilon) << rectangle_method(-2 * M_PI / 7, 2 * M_PI / 7, 1000, f2) << "\n";
-        std::cout << std::fixed << std::setprecision(epsilon) << trapezoid_method(-2 * M_PI / 7, 2 * M_PI / 7, 1000, f2) << "\n";
-        std::cout << std::fixed << std::setprecision(epsilon) << simpson_method(-2 * M_PI / 7, 2 * M_PI / 7, 1000, f2) << "\n\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << rectangle_meth << "\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << trapezoid_meth << "\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << simpson_meth << "\n\n";
     }
 }
 
@@ -107,12 +106,12 @@ void third_integral(int epsilon) {
 
     if (std::isnan(rectangle_meth) || std::isnan(trapezoid_meth) || std::isnan(simpson_meth)) {
         std::cout << "Integral value does not belong to R" << "\n\n";
-    } else if (rectangle_meth == INFINITY || trapezoid_meth == INFINITY || simpson_meth == INFINITY) {
+    } else if (std::isinf(rectangle_meth) || std::isinf(trapezoid_meth) || std::isinf(simpson_meth)) {
         std::cout << "The integral diverges" << "\n\n";
     } else {
-        std::cout << std::fixed << std::setprecision(epsilon) << rectangle_method(-7, -1, 1000, f3) << "\n";
-        std::cout << std::fixed << std::setprecision(epsilon) << trapezoid_method(-7, -1, 1000, f3) << "\n";
-        std::cout << std::fixed << std::setprecision(epsilon) << simpson_method(-7, -1, 1000, f3) << "\n\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << rectangle_meth << "\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << trapezoid_meth << "\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << simpson_meth << "\n\n";
     }
 }
 
@@ -125,30 +124,22 @@ void fourth_integral(int epsilon) {
 
     if (std::isnan(rectangle_meth) || std::isnan(trapezoid_meth) || std::isnan(simpson_meth)) {
         std::cout << "Integral value does not belong to R" << "\n\n";
-    } else if (rectangle_meth == INFINITY || trapezoid_meth == INFINITY || simpson_meth == INFINITY) {
+    } else if (std::isinf(rectangle_meth) || std::isinf(trapezoid_meth) || std::isinf(simpson_meth)) {
         std::cout << "The integral diverges" << "\n\n";
     } else {
-        std::cout << std::fixed << std::setprecision(epsilon) << rectangle_method(-2 * M_PI, 2 * M_PI, 1000, f4) << "\n";
-        std::cout << std::fixed << std::setprecision(epsilon) << trapezoid_method(-2 * M_PI, 2 * M_PI, 1000, f4) << "\n";
-        std::cout << std::fixed << std::setprecision(epsilon) << simpson_method(-2 * M_PI, 2 * M_PI, 1000, f4) << "\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << rectangle_meth << "\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << trapezoid_meth << "\n";
+        std::cout << std::fixed << std::setprecision(epsilon) << simpson_meth << "\n\n";
     }
 }
 
-int main() {
-    std::string eps_str;
+void task_8_variant_20() {
+    int eps;
 
-    std::cin >> eps_str;
-
-    try {
-        int eps = std::stoi(eps_str);
-
-        first_integral(eps);
-        second_integral(eps);
-        third_integral(eps);
-        fourth_integral(eps);
-    } catch (...) {
-        std::cout << "Some argument(s) is(are) not number(s)";
-
-        return;
-    }
+    std::cin >> eps;
+    
+    first_integral(eps);
+    second_integral(eps);
+    third_integral(eps);
+    fourth_integral(eps);
 }
