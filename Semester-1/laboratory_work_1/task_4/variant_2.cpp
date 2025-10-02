@@ -33,27 +33,19 @@ bool is_included_in_second_area(double x, double y) {
 }
 
 int main() {
-    std::string x_str, y_str;
+    double x, y;
 
-    std::cin >> x_str;
-    std::cin >> y_str;
+    std::cin >> x >> y;
 
-    try {
-        double x = std::stod(x_str);
-        double y = std::stod(y_str);
+    if (is_included_in_first_area(x, y)) {
+        std::cout << "Is included in first area" << "\n";
+    } else {
+        std::cout << "Isn't included in first area" << "\n";
+    }
 
-        if (is_included_in_first_area(x, y)) {
-            std::cout << "Is included in first area" << "\n";
-        } else {
-            std::cout << "Isn't included in first area" << "\n";
-        }
-
-        if (is_included_in_second_area(x, y)) {
-            std::cout << "Is included in second area" << "\n";
-        } else {
-            std::cout << "Isn't included in second area" << "\n";
-        }
-    } catch (...) {
-        std::cout << "Some argument(s) is(are) not number(s)";
+    if (is_included_in_second_area(x, y)) {
+        std::cout << "Is included in second area" << "\n";
+    } else {
+        std::cout << "Isn't included in second area" << "\n";
     }
 }
