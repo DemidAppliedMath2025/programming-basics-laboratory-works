@@ -133,7 +133,7 @@ void fourth_integral(int epsilon) {
     }
 }
 
-void task_8_variant_20() {
+int main() {
     int eps;
 
     std::cin >> eps;
