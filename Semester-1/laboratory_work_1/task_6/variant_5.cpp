@@ -18,11 +18,7 @@ int main() {
 
     for (int i = 1; i < n; ++i) {
         std::cin >> input;
-
-        if (!input) {
-            std::cout << "The input is not a natural number";
-        }
-
+        
         numbers[i] = input;
 
         double x1 = -sqrt(numbers[i - 1] - numbers[i]);
