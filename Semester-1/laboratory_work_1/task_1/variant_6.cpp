@@ -14,20 +14,13 @@ double expression_b(double p, double q) {
 }
 
 int main() {
-    std::string str_p, str_q;
+    double p, q;
 
-    std::cin >> str_p >> str_q;
+    std::cin >> p >> q;
 
-    try {
-        double p = std::stod(str_p);
-        double q = std::stod(str_q);
-
-        if (!(p != q && p >= 0 && q > 0 && sqrt(p) / (sqrt(p) - sqrt(q)) - sqrt(p / q) + 1 > 0)) {
-            std::cout << "Numbers don't fit in range";
-        } else {
-            std::cout << std::fixed << std::setprecision(6) << expression_a(p, q) - expression_b(p, q);
-        }
-    } catch (...) {
-        std::cout << "Some argument(s) is(are) not number(s)";
+    if (!(p != q && p >= 0 && q > 0 && sqrt(p) / (sqrt(p) - sqrt(q)) - sqrt(p / q) + 1 > 0)) {
+        std::cout << "Numbers don't fit in range";
+    } else {
+        std::cout << std::fixed << std::setprecision(6) << expression_a(p, q) - expression_b(p, q);
     }
 }
