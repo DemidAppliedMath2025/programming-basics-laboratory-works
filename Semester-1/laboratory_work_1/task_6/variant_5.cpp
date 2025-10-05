@@ -18,13 +18,15 @@ int main() {
 
     for (int i = 1; i < n; ++i) {
         std::cin >> input;
-        
+
         numbers[i] = input;
 
         double x1 = -sqrt(numbers[i - 1] - numbers[i]);
-        double x2 = -sqrt(numbers[i - 1] - numbers[i]);
+        double x2 = sqrt(numbers[i - 1] - numbers[i]);
 
-        !(((static_cast<int>(x1) >> 31) & 1) && ((static_cast<int>(x2) >> 31) & 1)) ? output += std::to_string(input) : output += "";
+        int roots_are_positive = !(((static_cast<int>(x1) >> 31) & 1) && ((static_cast<int>(x2) >> 31) & 1));
+
+        roots_are_positive ? output += std::to_string(input) : output += "";
     }
 
     if (output.empty()) {
