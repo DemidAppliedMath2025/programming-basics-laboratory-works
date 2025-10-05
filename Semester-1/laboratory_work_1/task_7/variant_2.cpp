@@ -23,20 +23,23 @@ double power(double number, double _power) {
 
 double cos_by_row(double x) {
     double num = 1;
+    double new_x = fmod(x, 2 * M_PI);
 
     for (int n = 1; n < 30; ++n) {
-        num += power(-1, n) * ((power(x, 2 * n) / factorial(2 * n)));
+        num += power(-1, n) * ((power(new_x, 2 * n) / factorial(2 * n)));
     }
 
     return num;
 }
 
 double cos_by_recursion(double x, int n) {
+    double new_x = fmod(x, 2 * M_PI);
+
     if (n == 30) {
         return 0;
     }
 
-    return power(-1, n) * ((power(x, 2 * n) / factorial(2 * n))) + cos_by_recursion(x, n + 1);
+    return power(-1, n) * ((power(new_x, 2 * n) / factorial(2 * n))) + cos_by_recursion(new_x, n + 1);
 }
 
 int main() {
