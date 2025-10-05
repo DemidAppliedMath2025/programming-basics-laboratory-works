@@ -21,5 +21,5 @@ int main() {
     int current_negative_sum_is_negative = (current_negative_sum >> 31) & 1;
     max_negative_sum = std::max(max_negative_sum, current_negative_sum * current_negative_sum_is_negative - 2047483648 * !current_negative_sum_is_negative);
 
-    std::cout << max_negative_sum;
+    std::cout << max_negative_sum * (max_negative_sum > 2047483648);
 }
