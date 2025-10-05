@@ -16,7 +16,7 @@ int main() {
 
         max_negative_sum = std::max(max_negative_sum, current_negative_sum * current_negative_sum_is_negative - 2047483648 * !current_negative_sum_is_negative) * !num_is_negative + max_negative_sum * num_is_negative;
         current_negative_sum = (current_negative_sum + num) * num_is_negative;
-    };
+    }
 
     int current_negative_sum_is_negative = (current_negative_sum >> 31) & 1;
     max_negative_sum = std::max(max_negative_sum, current_negative_sum * current_negative_sum_is_negative - 2047483648 * !current_negative_sum_is_negative);
